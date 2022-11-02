@@ -1,0 +1,157 @@
+<script lang="ts">
+
+import Vue from 'vue';
+
+const icons = {
+    discord: '<svg fill="currentColor" viewBox="0 0 16 16"><path d="M13.545 2.907a13.227 13.227 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.19 12.19 0 0 0-3.658 0 8.258 8.258 0 0 0-.412-.833.051.051 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.041.041 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032c.001.014.01.028.021.037a13.276 13.276 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019c.308-.42.582-.863.818-1.329a.05.05 0 0 0-.01-.059.051.051 0 0 0-.018-.011 8.875 8.875 0 0 1-1.248-.595.05.05 0 0 1-.02-.066.051.051 0 0 1 .015-.019c.084-.063.168-.129.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.052.052 0 0 1 .053.007c.08.066.164.132.248.195a.051.051 0 0 1-.004.085 8.254 8.254 0 0 1-1.249.594.05.05 0 0 0-.03.03.052.052 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.235 13.235 0 0 0 4.001-2.02.049.049 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.034.034 0 0 0-.02-.019Zm-8.198 7.307c-.789 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612Zm5.316 0c-.788 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612Z"/></svg>',
+};
+
+const form = {
+    email: '',
+    password: '',
+}
+
+export default Vue.extend({
+    data() {
+        return {
+            icons: icons,
+            form: form,
+        };
+    },
+    head() {
+        return {
+            title: `${this.$i18n.t('pages.account.login.meta.title')} - RAB Developments`,
+            meta: [
+                {
+                    hid: 'description', name: 'description',
+                    content: this.$i18n.t('pages.account.login.meta.description').toString(),
+                },
+                {
+                    hid: 'og:title', property: 'og:title',
+                    content: `${this.$i18n.t('pages.account.login.meta.title')}`,
+                },
+                {
+                    hid: 'og:description', property: 'og:description',
+                    content: this.$i18n.t('pages.account.login.meta.description').toString(),
+                },
+                {
+                    hid: 'twitter:description', name: 'twitter:description',
+                    content: this.$i18n.t('pages.account.login.meta.description').toString(),
+                },
+            ],
+        }
+    },
+    layout: 'empty',
+    methods: {
+        async login() {
+            try {
+                await this.$strapi.login({ identifier: this.form.email, password: this.form.password });
+                await this.$router.push(this.localePath('dashboard'));
+
+                this.$toast.show(`${this.$i18n.t('pages.account.login.alerts.success')}`,
+                    {
+                        position: 'top-left',
+                        duration: 5000,
+                        icon: 'done',
+                        type: 'success',
+                        theme: 'bubble',
+                    }
+                );
+
+                this.form.email = '';
+                this.form.password = '';
+
+            } catch (error) {
+
+                this.$toast.show(`${this.$i18n.t('pages.account.login.alerts.error')}`,
+                    {
+                        position: 'top-center',
+                        duration: 5000,
+                        icon: 'priority_high',
+                        type: 'error',
+                        theme: 'bubble',
+                    }
+                );
+            };
+        },
+    },
+})
+</script>
+    
+<template>
+    <main>
+        <div class="flex min-h-screen px-6">
+            <section class="w-full max-w-md m-auto">
+                <div class="bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-gray-800 dark:border-gray-700">
+                    <div class="p-4 sm:p-7">
+                        <div class="text-center">
+                            <h1 class="block text-2xl font-bold text-gray-800 dark:text-white">
+                                {{ $t('pages.account.login.card.title') }}
+                            </h1>
+                            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                                {{ $t('pages.account.login.card.subtitle.text') }}
+                                <NuxtLink class="ml-1 font-medium text-primary-500 decoration-2 hover:underline"
+                                    :to="localePath('account-register')">
+                                    {{ $t('pages.account.login.card.subtitle.button') }}
+                                </NuxtLink>
+                            </p>
+                        </div>
+                        <div class="mt-5">
+                            <!--
+                                <button type="button" @click="loginWith('discord')"
+                                    class="inline-flex items-center justify-center w-full gap-2 px-4 py-3 text-sm font-medium text-gray-700 align-middle transition-all bg-white border rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-primary-600 dark:bg-gray-800 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
+                                    <div v-html="icons.discord" class="mr-1"></div>
+                                    Iniciar sesión con Discord
+                                </button>
+                                <div
+                                    class="py-3 flex items-center text-xs text-gray-400 uppercase before:flex-[1_1_0%] before:border-t before:border-gray-200 before:mr-6 after:flex-[1_1_0%] after:border-t after:border-gray-200 after:ml-6 dark:text-gray-500 dark:before:border-gray-600 dark:after:border-gray-600">
+                                    O
+                                </div>
+                                -->
+                            <form @submit.prevent="login()">
+                                <div class="grid gap-y-4">
+                                    <div>
+                                        <label for="email" class="block mb-2 text-sm dark:text-white">
+                                            {{ $t('pages.account.login.card.form.fields.email') }}
+                                        </label>
+                                        <div class="relative">
+                                            <input type="email" id="email" name="email" v-model="form.email"
+                                                class="block w-full px-4 py-3 text-sm border-gray-200 rounded-md focus:border-primary-500 focus:ring-primary-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
+                                                required>
+                                        </div>
+                                    </div>
+                                    <div class="mb-2">
+                                        <div class="flex items-center justify-between">
+                                            <label for="password" class="block mb-2 text-sm dark:text-white">
+                                                {{ $t('pages.account.login.card.form.fields.password') }}
+                                            </label>
+                                            <NuxtLink
+                                                class="text-sm font-medium text-primary-500 decoration-2 hover:underline"
+                                                :to="localePath('account-password-email')">
+                                                {{ $t('pages.account.login.card.form.buttons.forgot') }}
+                                            </NuxtLink>
+                                        </div>
+                                        <div class="relative">
+                                            <input type="password" id="password" name="password" v-model="form.password"
+                                                class="block w-full px-4 py-3 text-sm border-gray-200 rounded-md focus:border-primary-500 focus:ring-primary-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
+                                                required>
+                                        </div>
+                                    </div>
+                                    <button type="submit"
+                                        class="inline-flex items-center justify-center gap-2 px-4 py-3 text-sm font-semibold text-white transition-all border border-transparent rounded-md bg-primary-500 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800">
+                                        {{ $t('pages.account.login.card.form.buttons.login') }}
+                                    </button>
+                                    <h2
+                                        class="block mt-2 text-xl font-light text-center text-gray-400 select-none dark:text-gray-500">
+                                        RAB Developments
+                                    </h2>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <UtilButtonsHomeBug class="mt-3" />
+            </section>
+        </div>
+    </main>
+</template>

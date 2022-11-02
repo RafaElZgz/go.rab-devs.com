@@ -1,0 +1,27 @@
+{
+    "meta": {
+        "title": "Log in",
+        "description": "TODO"
+    },
+    "alerts": {
+        "success": "Logged in",
+        "error": "Wrong username or password"
+    },
+    "card": {
+        "title": "Log in",
+        "subtitle": {
+            "text": "You do not have an account?",
+            "button": "Sign up here"
+        },
+        "form": {
+            "fields": {
+                "email": "Email",
+                "password": "Password"
+            },
+            "buttons": {
+                "login": "Log in",
+                "forgot": "Forgot your password?"
+            }
+        }
+    }
+}

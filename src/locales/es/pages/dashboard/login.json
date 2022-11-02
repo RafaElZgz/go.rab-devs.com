@@ -1,0 +1,27 @@
+{
+    "meta": {
+        "title": "Iniciar sesión",
+        "description": ""
+    },
+    "alerts": {
+        "success": "Sesión iniciada",
+        "error": "Usuario o contraseña incorrectos"
+    },
+    "card": {
+        "title": "Iniciar sesión",
+        "subtitle": {
+            "text": "¿No tienes una cuenta?",
+            "button": "Registraté aquí"
+        },
+        "form": {
+            "fields": {
+                "email": "Correo electrónico",
+                "password": "Contraseña"
+            },
+            "buttons": {
+                "login": "Iniciar sesión",
+                "forgot": "¿Has olvidado tu contraseña?"
+            }
+        }
+    }
+}
