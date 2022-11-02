@@ -48,7 +48,7 @@ export default async function (ctx: Context) {
             browserLanguage: '',
             browserVersion: '',
             city: '',
-            country: '',    
+            country: '',
             ipAddress: '',
             isp: '',
             language: ctx.i18n.locale,
@@ -60,16 +60,24 @@ export default async function (ctx: Context) {
         const visits_list: Visit[] = url.visits.list;
         visits_list.push(visit);
 
-        const new_visits = {
+        const new_visits_parameter = {
             count: url.visits.count + 1,
             list: visits_list,
         };
 
-        await ctx.app.$strapi.update('shortened-links', url.id,
-            {
-                visits: new_visits,
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${process.env.API_URL}`,
             }
-        ) as ShortenedLink;
+        }
+
+        await ctx.$axios.put(`${process.env.API_URL}/shortened-links/${url.id}`,
+            {
+                visits: new_visits_parameter
+            },
+            config,
+        );
 
         ctx.redirect(url.url);
     }

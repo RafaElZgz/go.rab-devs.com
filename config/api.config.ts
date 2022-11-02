@@ -1,9 +1,7 @@
 // https://strapi-v0.nuxtjs.org/options
 
-import data from '../data.global';
-
 export default {
-    url: data.api.url,
+    url: process.env.API_URL,
     entities: [],
     key: 'authToken',
     expires: '30d',
