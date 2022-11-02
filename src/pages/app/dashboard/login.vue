@@ -20,23 +20,23 @@ export default Vue.extend({
     },
     head() {
         return {
-            title: `${this.$i18n.t('pages.account.login.meta.title')} - RAB Developments`,
+            title: `${this.$i18n.t('pages.dashboard.login.meta.title')} - RAB Developments`,
             meta: [
                 {
                     hid: 'description', name: 'description',
-                    content: this.$i18n.t('pages.account.login.meta.description').toString(),
+                    content: this.$i18n.t('pages.dashboard.login.meta.description').toString(),
                 },
                 {
                     hid: 'og:title', property: 'og:title',
-                    content: `${this.$i18n.t('pages.account.login.meta.title')}`,
+                    content: `${this.$i18n.t('pages.dashboard.login.meta.title')}`,
                 },
                 {
                     hid: 'og:description', property: 'og:description',
-                    content: this.$i18n.t('pages.account.login.meta.description').toString(),
+                    content: this.$i18n.t('pages.dashboard.login.meta.description').toString(),
                 },
                 {
                     hid: 'twitter:description', name: 'twitter:description',
-                    content: this.$i18n.t('pages.account.login.meta.description').toString(),
+                    content: this.$i18n.t('pages.dashboard.login.meta.description').toString(),
                 },
             ],
         }
@@ -46,9 +46,9 @@ export default Vue.extend({
         async login() {
             try {
                 await this.$strapi.login({ identifier: this.form.email, password: this.form.password });
-                await this.$router.push(this.localePath('dashboard'));
+                await this.$router.push(this.localePath('app-dashboard'));
 
-                this.$toast.show(`${this.$i18n.t('pages.account.login.alerts.success')}`,
+                this.$toast.show(`${this.$i18n.t('pages.dashboard.login.alerts.success')}`,
                     {
                         position: 'top-left',
                         duration: 5000,
@@ -63,7 +63,7 @@ export default Vue.extend({
 
             } catch (error) {
 
-                this.$toast.show(`${this.$i18n.t('pages.account.login.alerts.error')}`,
+                this.$toast.show(`${this.$i18n.t('pages.dashboard.login.alerts.error')}`,
                     {
                         position: 'top-center',
                         duration: 5000,
@@ -86,14 +86,14 @@ export default Vue.extend({
                     <div class="p-4 sm:p-7">
                         <div class="text-center">
                             <h1 class="block text-2xl font-bold text-gray-800 dark:text-white">
-                                {{ $t('pages.account.login.card.title') }}
+                                {{ $t('pages.dashboard.login.card.title') }}
                             </h1>
                             <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                                {{ $t('pages.account.login.card.subtitle.text') }}
-                                <NuxtLink class="ml-1 font-medium text-primary-500 decoration-2 hover:underline"
-                                    :to="localePath('account-register')">
-                                    {{ $t('pages.account.login.card.subtitle.button') }}
-                                </NuxtLink>
+                                {{ $t('pages.dashboard.login.card.subtitle.text') }}
+                                <a class="ml-1 font-medium text-primary-500 decoration-2 hover:underline"
+                                    href="https://www.rab-devs.com/account/register">
+                                    {{ $t('pages.dashboard.login.card.subtitle.button') }}
+                                </a>
                             </p>
                         </div>
                         <div class="mt-5">
@@ -112,7 +112,7 @@ export default Vue.extend({
                                 <div class="grid gap-y-4">
                                     <div>
                                         <label for="email" class="block mb-2 text-sm dark:text-white">
-                                            {{ $t('pages.account.login.card.form.fields.email') }}
+                                            {{ $t('pages.dashboard.login.card.form.fields.email') }}
                                         </label>
                                         <div class="relative">
                                             <input type="email" id="email" name="email" v-model="form.email"
@@ -123,13 +123,13 @@ export default Vue.extend({
                                     <div class="mb-2">
                                         <div class="flex items-center justify-between">
                                             <label for="password" class="block mb-2 text-sm dark:text-white">
-                                                {{ $t('pages.account.login.card.form.fields.password') }}
+                                                {{ $t('pages.dashboard.login.card.form.fields.password') }}
                                             </label>
-                                            <NuxtLink
+                                            <a
                                                 class="text-sm font-medium text-primary-500 decoration-2 hover:underline"
-                                                :to="localePath('account-password-email')">
-                                                {{ $t('pages.account.login.card.form.buttons.forgot') }}
-                                            </NuxtLink>
+                                                href="https://www.rab-devs.com/account/password/email">
+                                                {{ $t('pages.dashboard.login.card.form.buttons.forgot') }}
+                                            </a>
                                         </div>
                                         <div class="relative">
                                             <input type="password" id="password" name="password" v-model="form.password"
@@ -139,7 +139,7 @@ export default Vue.extend({
                                     </div>
                                     <button type="submit"
                                         class="inline-flex items-center justify-center gap-2 px-4 py-3 text-sm font-semibold text-white transition-all border border-transparent rounded-md bg-primary-500 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800">
-                                        {{ $t('pages.account.login.card.form.buttons.login') }}
+                                        {{ $t('pages.dashboard.login.card.form.buttons.login') }}
                                     </button>
                                     <h2
                                         class="block mt-2 text-xl font-light text-center text-gray-400 select-none dark:text-gray-500">

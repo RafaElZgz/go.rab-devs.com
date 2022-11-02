@@ -1,6 +1,7 @@
 {
     "buttons": {
         "theme": "Cambiar tema",
-        "locale": "Cambiar idioma"
+        "locale": "Cambiar idioma",
+        "rab": "Ir a la página de RAB"
     }
 }

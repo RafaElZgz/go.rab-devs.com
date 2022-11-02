@@ -1,6 +1,7 @@
 {
     "buttons": {
         "theme": "Toggle theme",
-        "locale": "Toggle language"
+        "locale": "Toggle language",
+        "rab": "Go to RAB website"
     }
 }

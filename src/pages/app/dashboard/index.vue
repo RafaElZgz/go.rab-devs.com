@@ -21,9 +21,10 @@ export default Vue.extend({
             ],
         }
     },
+    layout: 'dashboard',
 })
 </script>
 
 <template>
-    
+    <UtilMaintenance />
 </template>

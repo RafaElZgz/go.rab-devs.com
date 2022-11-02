@@ -10,5 +10,6 @@ export default {
     ],
     defaultLocale: 'es',
     lazy: true,
-    langDir: '@/locales'
+    langDir: '@/locales',
+    strategy: 'no_prefix',
 }
