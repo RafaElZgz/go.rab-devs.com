@@ -68,7 +68,7 @@ export default async function (ctx: Context) {
 
         const config = {
             headers: {
-                Authorization: `Bearer ${process.env.API_URL}`,
+                Authorization: `Bearer ${process.env.API_TOKEN}`,
             }
         }
 
