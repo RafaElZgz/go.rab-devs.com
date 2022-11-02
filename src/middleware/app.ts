@@ -1,7 +1,7 @@
 import { Context } from '@nuxt/types';
 
 interface Visit {
-    id: string,
+    id: number,
     browser: string | undefined,
     browserLanguage: string | undefined,
     browserVersion: string | undefined,
@@ -33,7 +33,7 @@ export default async function (ctx: Context) {
 
         ctx.redirect(ctx.app.localePath('app'));
 
-    } else {
+    } else if (!ctx.route.path.startsWith('/app')) {
 
         const url = await ctx.app.$strapi.find(
             'shortened-links',
@@ -43,7 +43,7 @@ export default async function (ctx: Context) {
         ).catch(() => { ctx.error({ statusCode: 404 }); }) as ShortenedLink;
 
         const visit: Visit = {
-            id: '',
+            id: url.visits.count + 1,
             browser: '',
             browserLanguage: '',
             browserVersion: '',
