@@ -65,18 +65,10 @@ export default async function (ctx: Context) {
             list: visits_list,
         };
 
-
-        const config = {
-            headers: {
-                Authorization: `Bearer ${process.env.API_TOKEN}`,
-            }
-        }
-
-        await ctx.$axios.put(`${process.env.API_URL}/shortened-links/${url.id}`,
+        await ctx.$axios.put(`${process.env.API_URL}/shortened-links/${url.id}?token=${process.env.API_TOKEN}`,
             {
                 visits: new_visits_parameter
             },
-            config,
         );
 
         ctx.redirect(url.url);
