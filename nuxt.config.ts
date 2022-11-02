@@ -67,6 +67,14 @@ export default {
     { src: '~/plugins/preline.js', mode: 'client' },
   ],
 
+  // https://nuxtjs.org/tutorials/moving-from-nuxtjs-dotenv-to-runtime-config/
+  privateRuntimeConfig: {
+    apiToken: process.env.API_TOKEN,
+  },
+  publicRuntimeConfig: {
+    apiURL: process.env.API_URL,
+  },
+
   // https://nuxtjs.org/docs/configuration-glossary/configuration-server
   server: {
     port: 6583,

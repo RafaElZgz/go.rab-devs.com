@@ -65,7 +65,7 @@ export default async function (ctx: Context) {
             list: visits_list,
         };
 
-        await ctx.$axios.put(`${process.env.API_URL}/shortened-links/${url.id}?token=${process.env.API_TOKEN}`,
+        await ctx.$axios.put(`${ctx.$config.apiURL}/shortened-links/${url.id}?token=${ctx.$config.apiToken}`,
             {
                 visits: new_visits_parameter
             },
