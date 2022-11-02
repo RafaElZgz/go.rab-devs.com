@@ -42,35 +42,41 @@ export default async function (ctx: Context) {
             }
         ).catch(() => { ctx.error({ statusCode: 404 }); }) as ShortenedLink;
 
-        const visit: Visit = {
-            id: url.visits.count + 1,
-            browser: '',
-            browserLanguage: '',
-            browserVersion: '',
-            city: '',
-            country: '',
-            ipAddress: '',
-            isp: '',
-            language: ctx.i18n.locale,
-            os: '',
-            osVersion: '',
-            region: '',
-        };
+        if (url) {
 
-        const visits_list: Visit[] = url.visits.list;
-        visits_list.push(visit);
+            const visit: Visit = {
+                id: url.visits.count + 1,
+                browser: '',
+                browserLanguage: '',
+                browserVersion: '',
+                city: '',
+                country: '',
+                ipAddress: '',
+                isp: '',
+                language: ctx.i18n.locale,
+                os: '',
+                osVersion: '',
+                region: '',
+            };
 
-        const new_visits_parameter = {
-            count: url.visits.count + 1,
-            list: visits_list,
-        };
+            const visits_list: Visit[] = url.visits.list;
+            visits_list.push(visit);
 
-        await ctx.$axios.put(`${ctx.$config.apiURL}/shortened-links/${url.id}?token=${ctx.$config.apiToken}`,
-            {
-                visits: new_visits_parameter
-            },
-        );
+            const new_visits_parameter = {
+                count: url.visits.count + 1,
+                list: visits_list,
+            };
 
-        ctx.redirect(url.url);
+            await ctx.$axios.put(`${ctx.$config.apiURL}/shortened-links/${url.id}?token=${ctx.$config.apiToken}`,
+                {
+                    visits: new_visits_parameter
+                },
+            );
+
+            ctx.redirect(url.url);
+
+        } else {
+            ctx.error({ statusCode: 404 });
+        }
     }
 }
