@@ -21,6 +21,7 @@ export default Vue.extend({
             ],
         }
     },
+    middleware: 'app',
 })
 </script>
 

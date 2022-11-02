@@ -1,0 +1,10 @@
+{
+    "text": {
+        "l1": "No encontramos la página que estás buscando, vuelve a intentarlo más tarde.",
+        "l2": "También tenemos muchas más que puedes consultar."
+    },
+    "buttons": {
+        "home": "Volver al inicio",
+        "report": "Reportar un fallo"
+    }
+}

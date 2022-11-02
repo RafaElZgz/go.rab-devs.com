@@ -25,4 +25,5 @@ export default Vue.extend({
 </script>
 
 <template>
+    
 </template>

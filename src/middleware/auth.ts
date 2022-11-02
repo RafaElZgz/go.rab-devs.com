@@ -1,4 +1,4 @@
-import { Context } from '@nuxt/types'
+import { Context } from '@nuxt/types';
 
 export default function (ctx: Context) {
     if (!ctx.$strapi.user) {
