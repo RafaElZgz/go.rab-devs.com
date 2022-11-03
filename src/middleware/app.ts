@@ -40,11 +40,11 @@ export default async function (ctx: Context) {
             'shortened-links',
             {
                 token: ctx.$config.apiToken,
-                slug: ctx.route.params.slug.toLowerCase(),
+                slug: ctx.route.params.slug,
             }
         ).catch(() => { ctx.error({ statusCode: 404 }); }) as ShortenedLink;
 
-        if (url) {
+        if (!Array.isArray(url)) {
 
             const ip_data = await ctx.app.$axios.$get('http://ip-api.com/json/');
 
