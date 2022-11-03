@@ -75,11 +75,12 @@ export default {
   },
   publicRuntimeConfig: {
     apiURL: process.env.API_URL,
+    appURL: `https://${data.main.domain}`,
   },
 
   // https://nuxtjs.org/docs/configuration-glossary/configuration-server
   server: {
-    port: 6583,
+    port: 12250,
     host: '0.0.0.0',
   },
 

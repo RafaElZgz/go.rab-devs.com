@@ -8,7 +8,7 @@
     "url": "https://www.rab-devs.com/en/contact",
     "email": "contacto@rab-devs.com"
   },
-  "license": "GNU GPLv3",
+  "license": "GPL-3.0+",
   "author": "Rafael Alastuey <rafa@rab-devs.com> (https://www.rab-devs.com/rafa)",
   "repository": {
     "type": "git",
