@@ -69,10 +69,11 @@ export default {
   ],
 
   // https://nuxtjs.org/tutorials/moving-from-nuxtjs-dotenv-to-runtime-config/
-  privateRuntimeConfig: {},
+  privateRuntimeConfig: {
+    apiToken: process.env.API_TOKEN,
+  },
   publicRuntimeConfig: {
     apiURL: process.env.API_URL,
-    apiToken: process.env.API_TOKEN,
   },
 
   // https://nuxtjs.org/docs/configuration-glossary/configuration-server

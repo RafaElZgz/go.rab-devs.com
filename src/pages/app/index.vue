@@ -41,6 +41,7 @@ export default Vue.extend({
     data() {
         return {
             form: form,
+            apiToken: this.$config.apiToken,
         }
     },
     head() {
@@ -70,7 +71,7 @@ export default Vue.extend({
                 const existingLinks = await this.$strapi.find(
                     'shortened-links',
                     {
-                        token: this.$config.apiToken,
+                        token: this.apiToken,
                     }
                 ).catch(() => { this.$nuxt.error({ statusCode: 404 }); }) as ShortenedLink[];
 
