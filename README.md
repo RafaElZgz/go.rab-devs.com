@@ -6,6 +6,15 @@
 
 ---
 
+## Goals
+
+- [x] Create a Shortened URL via the Home page form and store in the API.
+- [x] Make the URL forwarding system .
+- [X] Collect statistics from link visitors and save them in the API.
+- [x] Make a funcional login system.
+- [ ] Create in the Dashboard a section to manage the Shortened URLs.
+- [ ] Create in the Dashboard a section to show URL's statistics.
+
 ## Project details
 
 - All the interface goes under '/app'
