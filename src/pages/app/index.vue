@@ -76,9 +76,11 @@ export default Vue.extend({
                     form.slug = (Math.random() + 1).toString(36).substring(7);
                 }
 
+                this.form.slug = this.form.slug.toLowerCase();
+
                 existingLinks.forEach((link) => {
 
-                    if (link.slug === this.form.slug) {
+                    if (link.slug.toLowerCase() === this.form.slug) {
 
                         this.$toast.show(this.$i18n.t('pages.index.alerts.error.slug').toString(),
                             {

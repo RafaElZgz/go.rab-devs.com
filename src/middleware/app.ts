@@ -40,7 +40,7 @@ export default async function (ctx: Context) {
             'shortened-links',
             {
                 token: ctx.$config.apiToken,
-                slug: ctx.route.params.slug,
+                slug: ctx.route.params.slug.toLowerCase(),
             }
         ).catch(() => { ctx.error({ statusCode: 404 }); }) as ShortenedLink;
 
