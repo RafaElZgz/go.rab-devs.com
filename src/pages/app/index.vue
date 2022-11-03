@@ -9,39 +9,10 @@ const form = {
     user: null,
 }
 
-interface Visit {
-    id: number,
-    browser: string | undefined,
-    browserLanguage: string | undefined,
-    browserVersion: string | undefined,
-    city: string | undefined,
-    country: string | undefined,
-    deviceType: string | undefined,
-    ipAddress: string | undefined,
-    isp: string | undefined,
-    i18nLanguage: string,
-    os: string | undefined,
-    osVersion: string | undefined,
-    region: string | undefined,
-}
-
-interface ShortenedLink {
-    id: string,
-    user: Object,
-    name: string,
-    slug: string,
-    url: string,
-    visits: {
-        count: number,
-        list: Visit[],
-    },
-}
-
 export default Vue.extend({
     data() {
         return {
             form: form,
-            apiToken: this.$config.apiToken,
         }
     },
     head() {
@@ -64,16 +35,10 @@ export default Vue.extend({
     },
     methods: {
         async createLink() {
+
             try {
 
                 var exists = false;
-
-                const existingLinks = await this.$strapi.find(
-                    'shortened-links',
-                    {
-                        token: this.apiToken,
-                    }
-                ).catch(() => { this.$nuxt.error({ statusCode: 404 }); }) as ShortenedLink[];
 
                 if (!form.slug) {
                     form.slug = (Math.random() + 1).toString(36).substring(7);
@@ -81,7 +46,7 @@ export default Vue.extend({
 
                 this.form.slug = this.form.slug.toLowerCase();
 
-                existingLinks.forEach((link) => {
+                this.$accessor.existingLinks.forEach((link: any) => {
 
                     if (link.slug.toLowerCase() === this.form.slug) { exists = true; }
                 });
