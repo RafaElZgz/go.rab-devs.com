@@ -23,6 +23,7 @@ export default {
   buildModules: [
     '@nuxt/postcss8',
     '@nuxt/typescript-build',
+    'nuxt-typed-vuex',
   ],
 
 
