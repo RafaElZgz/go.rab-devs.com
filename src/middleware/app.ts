@@ -50,7 +50,8 @@ export default async function (ctx: Context) {
 
         if (request_link) {
 
-            const ip_data = await ctx.app.$axios.$get('http://ip-api.com/json/');
+            const ip = ctx.req.headers['x-forwarded-for'] || ctx.req.socket.remoteAddress;
+            const ip_data = await ctx.app.$axios.$get(`http://ip-api.com/json/${ip}`);
 
             const visit: Visit = {
                 id: request_link.visits.count + 1,
