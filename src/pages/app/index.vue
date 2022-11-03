@@ -53,7 +53,6 @@ export default Vue.extend({
 
                 if (!exists) {
 
-                    /*
                     await this.$strapi.create('shortened-links',
                         {
                             name: this.form.name,
@@ -66,7 +65,6 @@ export default Vue.extend({
                             },
                         }
                     );
-                    */
 
                     this.$toast.show(`${this.$i18n.t('pages.index.alerts.success').toString()}`,
                         {
