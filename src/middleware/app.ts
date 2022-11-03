@@ -36,20 +36,24 @@ export default async function (ctx: Context) {
 
     } else if (!ctx.route.path.startsWith('/app')) {
 
-        const url = await ctx.app.$strapi.find(
+        const request_slug = ctx.route.path.slice(1);
+
+        const apiResponse = await ctx.app.$strapi.find(
             'shortened-links',
             {
                 token: ctx.$config.apiToken,
-                slug: ctx.route.params.slug,
+                slug: request_slug,
             }
-        ).catch(() => { ctx.error({ statusCode: 404 }); }) as ShortenedLink;
+        ).catch(() => { ctx.error({ statusCode: 404 }); }) as ShortenedLink[];
 
-        if (!Array.isArray(url)) {
+        const request_link = apiResponse[0];
+
+        if (request_link) {
 
             const ip_data = await ctx.app.$axios.$get('http://ip-api.com/json/');
 
             const visit: Visit = {
-                id: url.visits.count + 1,
+                id: request_link.visits.count + 1,
                 browser: ctx.app.$ua.browser(),
                 browserLanguage: ctx.app.i18n.getBrowserLocale(),
                 browserVersion: ctx.app.$ua.browserVersion(),
@@ -64,21 +68,21 @@ export default async function (ctx: Context) {
                 region: ip_data.regionName,
             };
 
-            const visits_list: Visit[] = url.visits.list;
+            const visits_list: Visit[] = request_link.visits.list;
             visits_list.push(visit);
 
             const new_visits_parameter = {
-                count: url.visits.count + 1,
+                count: request_link.visits.count + 1,
                 list: visits_list,
             };
 
-            await ctx.$axios.put(`${ctx.$config.apiURL}/shortened-links/${url.id}?token=${ctx.$config.apiToken}`,
+            await ctx.$axios.put(`${ctx.$config.apiURL}/shortened-links/${request_link.id}?token=${ctx.$config.apiToken}`,
                 {
                     visits: new_visits_parameter
                 },
             );
 
-            ctx.redirect(url.url);
+            ctx.redirect(request_link.url);
 
         } else {
             ctx.error({ statusCode: 404 });
