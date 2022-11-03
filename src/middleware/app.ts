@@ -39,6 +39,7 @@ export default async function (ctx: Context) {
         const url = await ctx.app.$strapi.find(
             'shortened-links',
             {
+                token: ctx.$config.apiToken,
                 slug: ctx.route.params.slug,
             }
         ).catch(() => { ctx.error({ statusCode: 404 }); }) as ShortenedLink;

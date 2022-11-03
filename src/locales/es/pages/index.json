@@ -1,6 +1,34 @@
 {
     "meta": {
-        "title": "APP",
-        "description": "TODO"
+        "title": "RAB GO",
+        "description": "Acortador de enlaces gratuito, por RAB Developments."
+    },
+    "alerts": {
+        "success": "Enlace acortado con éxito",
+        "error": {
+            "slug": "Esa terminación ya está en uso"
+        }
+    },
+    "subtitle": "Acorta tus enlaces de forma gratuita con un par de clics y obtén estadísticas de los visitantes.",
+    "info": {
+        "text": [
+            "Debes",
+            "iniciar sesión",
+            "antes de crear el enlace para poder consultar las estadísticas"
+        ]
+    },
+    "form": {
+        "title": "Crea tu enlace",
+        "fields": {
+            "name": "Nombre descriptivo del enlace",
+            "url": "Enlace original",
+            "slug": {
+                "text": "Terminación del nuevo enlace",
+                "help": "Campo opcional"
+            }
+        },
+        "buttons": {
+            "submit": "Crear enlace"
+        }
     }
 }

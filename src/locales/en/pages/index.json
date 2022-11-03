@@ -1,6 +1,34 @@
 {
     "meta": {
-        "title": "APP",
-        "description": "TODO"
+        "title": "RAB GO",
+        "description": "Free URL Shortener, by RAB Developments."
+    },
+    "alerts": {
+        "success": "Successfully shortened link",
+        "error": {
+            "slug": "That slug is already in use"
+        }
+    },
+    "subtitle": "Short your links for free in a couple of clicks and get visitor statistics.",
+    "info": {
+        "text": [
+            "You should",
+            "log in",
+            "before create the link to be able to consult the statistics"
+        ]
+    },
+    "form": {
+        "title": "Create your link",
+        "fields": {
+            "name": "Descriptive name of the link",
+            "url": "Original link",
+            "slug": {
+                "text": "Slug of the new link",
+                "help": "Optional field"
+            }
+        },
+        "buttons": {
+            "submit": "Create link"
+        }
     }
 }
