@@ -137,11 +137,11 @@ export default Vue.extend({
             <section class="flex w-full min-h-screen pt-[4.5rem]">
                 <div class="m-auto">
 
-                    <div class="flex flex-col my-8 md:flex-row gap-y-8 md:gap-x-20">
+                    <div class="flex flex-col my-8 md:flex-row gap-y-8 md:gap-x-40">
 
-                        <div class="flex flex-col w-full m-auto mt-2">
+                        <div class="flex flex-col w-1/2 m-auto mt-2">
                             <div class="md:grid md:grid-cols-2">
-                                <div class="flex -mr-4">
+                                <div class="flex">
                                     <h1
                                         class="py-2 m-auto text-5xl font-bold text-center drop-shadow-xl md:text-7xl text-primary-500">
                                         RAB GO
@@ -166,9 +166,9 @@ export default Vue.extend({
                             </p>
                         </div>
 
-                        <div class="flex flex-col w-full m-auto">
+                        <div class="flex flex-col w-1/2 m-auto">
                             <div
-                                class="px-10 py-8 my-4 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
+                                class="w-full px-10 py-8 mx-auto my-4 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
                                 <h3 class="py-2 mb-6 text-2xl font-bold text-center md:text-4xl dark:text-gray-300">
                                     {{ $t('pages.index.form.title') }}
                                 </h3>
