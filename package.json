@@ -1,7 +1,20 @@
 {
   "name": "go.rab-devs.com",
-  "version": "1.0.0",
-  "private": true,
+  "version": "v0.0.1-pre-alpha",
+  "description": "The RAB Developments URL Shortener",
+  "keywords": [ "go", "rab-devs", "rab-devs.com", "url-shortener", "url", "shortener" ],
+  "homepage": "https://go.rab-devs.com",
+  "bugs": {
+    "url": "https://www.rab-devs.com/en/contact",
+    "email": "contacto@rab-devs.com"
+  },
+  "license": "GNU GPLv3",
+  "author": "Rafael Alastuey <rafa@rab-devs.com> (https://www.rab-devs.com/rafa)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RafaElZgz/go.rab-devs.com.git"
+  },
+  "private": false,
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
