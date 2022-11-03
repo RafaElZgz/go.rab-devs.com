@@ -65,6 +65,8 @@ export default Vue.extend({
         async createLink() {
             try {
 
+                var exists = false;
+
                 const existingLinks = await this.$strapi.find(
                     'shortened-links',
                     {
@@ -80,48 +82,50 @@ export default Vue.extend({
 
                 existingLinks.forEach((link) => {
 
-                    if (link.slug.toLowerCase() === this.form.slug) {
-
-                        this.$toast.show(this.$i18n.t('pages.index.alerts.error.slug').toString(),
-                            {
-                                position: 'top-center',
-                                duration: 5000,
-                                icon: 'priority_high',
-                                type: 'error',
-                                theme: 'bubble',
-                            }
-                        );
-
-                    } else {
-
-                        this.$strapi.create('shortened-links',
-                            {
-                                name: this.form.name,
-                                user: this.form.user,
-                                slug: this.form.slug,
-                                url: this.form.url,
-                                visits: {
-                                    count: 0,
-                                    list: [],
-                                },
-                            }
-                        );
-
-                        this.form.name = '';
-                        this.form.url = '';
-                        this.form.slug = '';
-
-                        this.$toast.show(this.$i18n.t('pages.index.alerts.success').toString(),
-                            {
-                                position: 'top-left',
-                                duration: 5000,
-                                icon: 'done',
-                                type: 'success',
-                                theme: 'bubble',
-                            }
-                        );
-                    }
+                    if (link.slug.toLowerCase() === this.form.slug) { exists = true; }
                 });
+
+                if (!exists) {
+
+                    await this.$strapi.create('shortened-links',
+                        {
+                            name: this.form.name,
+                            user: this.form.user,
+                            slug: this.form.slug,
+                            url: this.form.url,
+                            visits: {
+                                count: 0,
+                                list: [],
+                            },
+                        }
+                    );
+
+                    this.form.name = '';
+                    this.form.url = '';
+                    this.form.slug = '';
+
+                    this.$toast.show(this.$i18n.t('pages.index.alerts.success').toString(),
+                        {
+                            position: 'top-left',
+                            duration: null,
+                            icon: 'done',
+                            type: 'success',
+                            theme: 'bubble',
+                        }
+                    );
+                } else {
+                    
+                    this.$toast.show(this.$i18n.t('pages.index.alerts.error.slug').toString(),
+                        {
+                            position: 'top-center',
+                            duration: 5000,
+                            icon: 'priority_high',
+                            type: 'error',
+                            theme: 'bubble',
+                        }
+                    );
+                }
+
             } catch (error) { alert('ERROR: ' + error) };
         },
     },
@@ -141,7 +145,7 @@ export default Vue.extend({
 
                     <div class="flex flex-col my-8 md:flex-row gap-y-8 md:gap-x-40">
 
-                        <div class="flex flex-col w-1/2 m-auto mt-2">
+                        <div class="flex flex-col w-full m-auto mt-2">
                             <div class="md:grid md:grid-cols-2">
                                 <div class="flex">
                                     <h1
@@ -157,18 +161,17 @@ export default Vue.extend({
                                 {{ $t('pages.index.subtitle') }}
                             </p>
                             <p class="py-2 font-light text-center md:text-left dark:text-gray-500">
-                                <span class="text-sm material-icons">info</span> 
-                                {{ $t('pages.index.info.text.0') }} 
-                                <NuxtLink
-                                    :to="localePath('app-dashboard-login')"
+                                <span class="text-sm material-icons">info</span>
+                                {{ $t('pages.index.info.text.0') }}
+                                <NuxtLink :to="localePath('app-dashboard-login')"
                                     class="font-semibold text-primary-500 hover:underline">
                                     {{ $t('pages.index.info.text.1') }}
-                                </NuxtLink> 
+                                </NuxtLink>
                                 {{ $t('pages.index.info.text.2') }}
                             </p>
                         </div>
 
-                        <div class="flex flex-col w-1/2 m-auto">
+                        <div class="flex flex-col w-full m-auto">
                             <div
                                 class="w-full px-10 py-8 mx-auto my-4 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
                                 <h3 class="py-2 mb-6 text-2xl font-bold text-center md:text-4xl dark:text-gray-300">
@@ -205,7 +208,9 @@ export default Vue.extend({
                                             </label>
                                         </div>
                                         <p id="slug_helper_text" class="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                                            <span class="text-primary-500">*</span> {{ $t('pages.index.form.fields.slug.help') }}
+                                            <span class="text-primary-500">*</span> {{
+                                                    $t('pages.index.form.fields.slug.help')
+                                            }}
                                         </p>
                                     </div>
                                     <div class="flex flex-col mt-8 sm:flex-row sm:justify-center sm:space-x-4">
