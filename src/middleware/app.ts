@@ -7,9 +7,10 @@ interface Visit {
     browserVersion: string | undefined,
     city: string | undefined,
     country: string | undefined,
-    ipAddress: string,
+    deviceType: string | undefined,
+    ipAddress: string | undefined,
     isp: string | undefined,
-    language: string,
+    i18nLanguage: string,
     os: string | undefined,
     osVersion: string | undefined,
     region: string | undefined,
@@ -44,19 +45,22 @@ export default async function (ctx: Context) {
 
         if (url) {
 
+            const ip_data = await ctx.app.$axios.$get('http://ip-api.com/json/');
+
             const visit: Visit = {
                 id: url.visits.count + 1,
-                browser: '',
-                browserLanguage: '',
-                browserVersion: '',
-                city: '',
-                country: '',
-                ipAddress: '',
-                isp: '',
-                language: ctx.i18n.locale,
-                os: '',
-                osVersion: '',
-                region: '',
+                browser: ctx.app.$ua.browser(),
+                browserLanguage: ctx.app.i18n.getBrowserLocale(),
+                browserVersion: ctx.app.$ua.browserVersion(),
+                city: ip_data.city,
+                country: ip_data.country,
+                deviceType: ctx.app.$ua.deviceType(),
+                ipAddress: ip_data.query,
+                isp: ip_data.isp,
+                i18nLanguage: ctx.i18n.locale,
+                os: ctx.app.$ua.os(),
+                osVersion: ctx.app.$ua.osVersion(),
+                region: ip_data.regionName,
             };
 
             const visits_list: Visit[] = url.visits.list;

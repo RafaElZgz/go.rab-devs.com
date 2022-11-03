@@ -59,6 +59,7 @@ export default {
     '@nuxtjs/sitemap',
     '@nuxtjs/strapi',
     '@nuxtjs/toast',
+    'nuxt-user-agent',
   ],
 
   // https://go.nuxtjs.dev/config-plugins
