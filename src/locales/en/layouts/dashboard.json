@@ -1,0 +1,28 @@
+{
+    "header": {
+        "searchbar": {
+            "placeholder": "Not available"
+        },
+        "user": {
+            "menu": {
+                "title": "Logged in as",
+                "settings": "Account settings",
+                "logout": "Sign off"
+            }
+        }
+    },
+    "submenu": {
+        "breadcrumb": {
+            "app": "App",
+            "dashboard": "Dashboard"
+        }
+    },
+    "sidebar": {
+        "buttons": {
+            "home": "Home",
+            "links": "Links",
+            "settings": "Settings",
+            "exit": "Go back to the app"
+        }
+    }
+}

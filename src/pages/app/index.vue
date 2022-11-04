@@ -119,24 +119,24 @@ export default Vue.extend({
             <section class="flex w-full min-h-screen pt-[4.5rem]">
                 <div class="m-auto">
 
-                    <div class="flex flex-col my-8 md:flex-row gap-y-8 md:gap-x-40">
+                    <div class="flex flex-col my-8 xl:flex-row gap-y-8 md:gap-x-40">
 
                         <div class="flex flex-col w-full m-auto mt-2">
-                            <div class="md:grid md:grid-cols-2">
+                            <div class="md:grid 2xl:grid-cols-2">
                                 <div class="flex">
                                     <h1
                                         class="py-2 m-auto text-5xl font-bold text-center drop-shadow-xl md:text-7xl text-primary-500">
                                         RAB GO
                                     </h1>
                                 </div>
-                                <div class="hidden md:flex">
+                                <div class="hidden 2xl:flex">
                                     <img src="/media/ilustration.svg" alt="RAB GO" class="px-2 m-auto -my-10 w-96" />
                                 </div>
                             </div>
-                            <p class="py-2 text-lg text-center md:text-left md:text-2xl dark:text-gray-400">
+                            <p class="py-2 text-lg text-center 2xl:text-left md:text-2xl dark:text-gray-400">
                                 {{ $t('pages.index.subtitle') }}
                             </p>
-                            <p class="py-2 font-light text-center md:text-left dark:text-gray-500">
+                            <p class="py-2 font-light text-center xl:text-left dark:text-gray-500">
                                 <span class="text-sm material-icons">info</span>
                                 {{ $t('pages.index.info.text.0') }}
                                 <NuxtLink :to="localePath('app-dashboard-login')"

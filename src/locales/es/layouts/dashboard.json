@@ -1,0 +1,28 @@
+{
+    "header": {
+        "searchbar": {
+            "placeholder": "No disponible"
+        },
+        "user": {
+            "menu": {
+                "title": "Sesión iniciada como",
+                "settings": "Ajustes cuenta",
+                "logout": "Cerrar sesión"
+            }
+        }
+    },
+    "submenu": {
+        "breadcrumb": {
+            "app": "Aplicación",
+            "dashboard": "Panel de gestión"
+        }
+    },
+    "sidebar": {
+        "buttons": {
+            "home": "Inicio",
+            "links": "Enlaces",
+            "settings": "Ajustes",
+            "exit": "Volver a la app"
+        }
+    }
+}

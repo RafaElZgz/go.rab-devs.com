@@ -12,7 +12,9 @@
 - [x] Make the URL forwarding system .
 - [X] Collect statistics from link visitors and save them in the API.
 - [x] Make a funcional login system.
+- [x] Create a Dashboard layout.
 - [ ] Create in the Dashboard a section to manage the Shortened URLs.
+- [ ] Create in the Dashboard a section to manage the aplication settings.
 - [ ] Create in the Dashboard a section to show URL's statistics.
 
 ## Project details
