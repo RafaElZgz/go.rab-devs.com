@@ -6,6 +6,11 @@
 
 ---
 
+## Preview
+
+![APP Preview](https://i.imgur.com/Hw5l5iG.png)
+![Dashboard Preview](https://i.imgur.com/hHyNJKk.png)
+
 ## Goals
 
 - [x] Create a Shortened URL via the Home page form and store in the API.
