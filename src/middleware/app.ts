@@ -14,6 +14,7 @@ interface Visit {
     os: string | undefined,
     osVersion: string | undefined,
     region: string | undefined,
+    createdAt: Date,
 }
 
 interface ShortenedLink {
@@ -67,6 +68,7 @@ export default async function (ctx: Context) {
                 os: ctx.app.$ua.os(),
                 osVersion: ctx.app.$ua.osVersion(),
                 region: ip_data.regionName,
+                createdAt: new Date(),
             };
 
             const visits_list: Visit[] = request_link.visits.list;
