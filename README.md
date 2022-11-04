@@ -19,13 +19,14 @@
 - [x] Make a funcional login system.
 - [x] Create a Dashboard layout.
 - [ ] Create in the Dashboard a section to manage the Shortened URLs.
-- [ ] Create in the Dashboard a section to manage the aplication settings.
+- [ ] Create in the Dashboard a section to manage the application settings.
 - [ ] Create in the Dashboard a section to show URL's statistics.
 
 ## Project details
 
-- All the interface goes under '/app'
-- Everybody can short a link, the statics of a link are only visible to the link creator, if any, or staff.
+- The application supports i18n and dark/light mode.
+- All the interface goes under '/app'.
+- Everybody can short a link, the link stats are only visible to the link creator, if any, and staff.
 - The links are associated with the RAB Developments (Strapi User from users-permissions) account that creates them, if any.
 
 ## Requirements to fork/work on this project
