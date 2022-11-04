@@ -5,6 +5,7 @@
     },
     "alerts": {
         "success": "Successfully shortened link",
+        "link": "The new link is",
         "error": {
             "slug": "That slug is already in use"
         }

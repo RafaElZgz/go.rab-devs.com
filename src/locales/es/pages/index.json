@@ -5,6 +5,7 @@
     },
     "alerts": {
         "success": "Enlace acortado con éxito",
+        "link": "El nuevo link es",
         "error": {
             "slug": "Esa terminación ya está en uso"
         }

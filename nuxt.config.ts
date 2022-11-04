@@ -23,6 +23,7 @@ export default {
   buildModules: [
     '@nuxt/postcss8',
     '@nuxt/typescript-build',
+    'nuxt-typed-vuex',
   ],
 
 
@@ -69,15 +70,17 @@ export default {
   ],
 
   // https://nuxtjs.org/tutorials/moving-from-nuxtjs-dotenv-to-runtime-config/
-  privateRuntimeConfig: {},
+  privateRuntimeConfig: {
+    apiToken: process.env.API_TOKEN,
+  },
   publicRuntimeConfig: {
     apiURL: process.env.API_URL,
-    apiToken: process.env.API_TOKEN,
+    appURL: `https://${data.main.domain}`,
   },
 
   // https://nuxtjs.org/docs/configuration-glossary/configuration-server
   server: {
-    port: 6583,
+    port: 12250,
     host: '0.0.0.0',
   },
 
