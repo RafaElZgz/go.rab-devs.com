@@ -19,6 +19,7 @@ interface Visit {
     os: string | undefined,
     osVersion: string | undefined,
     region: string | undefined,
+    createdAt: Date,
 }
 
 interface ShortenedLink {
