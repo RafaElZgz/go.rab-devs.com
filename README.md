@@ -1,3 +1,8 @@
+# IMPORTANT
+
+> There is a major issue with Strapi. The Population fails for Users in Users-Permissions plugin.
+> For this reason (and due to the imminent release of Nuxt v3) the project will be on standby until I find an optimal way to fix this unforeseen event.
+
 # RAB GO
 
 ## URL Shotener
