@@ -1,3 +1,12 @@
+# IMPORTANT
+
+> There is a major issue with Strapi. The [Population fails](https://github.com/strapi/strapi/issues/11957) for Users in Users-Permissions plugin.
+> For this reason (and due to the imminent release of Nuxt v3) the project will be on standby until I find an optimal way to fix this unforeseen event.
+
+### UPDATE
+
+> The development of the project will continue in the next few days using Directus as API.
+
 # RAB GO
 
 ## URL Shotener
@@ -5,6 +14,11 @@
 ### Made with Nuxt v2, Tailwind and Strapi v3
 
 ---
+
+## Preview
+
+![APP Preview](https://i.imgur.com/Hw5l5iG.png)
+![Dashboard Preview](https://i.imgur.com/hHyNJKk.png)
 
 ## Goals
 
@@ -14,13 +28,14 @@
 - [x] Make a funcional login system.
 - [x] Create a Dashboard layout.
 - [ ] Create in the Dashboard a section to manage the Shortened URLs.
-- [ ] Create in the Dashboard a section to manage the aplication settings.
+- [ ] Create in the Dashboard a section to manage the application settings.
 - [ ] Create in the Dashboard a section to show URL's statistics.
 
 ## Project details
 
-- All the interface goes under '/app'
-- Everybody can short a link, the statics of a link are only visible to the link creator, if any, or staff.
+- The application supports i18n and dark/light mode.
+- All the interface goes under '/app'.
+- Everybody can short a link, the link stats are only visible to the link creator, if any, and staff.
 - The links are associated with the RAB Developments (Strapi User from users-permissions) account that creates them, if any.
 
 ## Requirements to fork/work on this project

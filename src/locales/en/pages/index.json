@@ -13,9 +13,9 @@
     "subtitle": "Short your links for free in a couple of clicks and get visitor statistics.",
     "info": {
         "text": [
-            "You should",
-            "log in",
-            "before create the link to be able to consult the statistics."
+            "You must be",
+            "logged in",
+            "to view new link stats."
         ]
     },
     "form": {
