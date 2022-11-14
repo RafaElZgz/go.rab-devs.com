@@ -29,7 +29,7 @@ export default Vue.extend({
     methods: {
         async logout() {
             try {
-                await this.$strapi.logout().then(() => { this.$router.push(this.localePath('index')) });
+                //await this.$strapi.logout().then(() => { this.$router.push(this.localePath('index')) });
             } catch (error) { alert('ERROR: ' + error) }
         },
         toggleLocale() {
