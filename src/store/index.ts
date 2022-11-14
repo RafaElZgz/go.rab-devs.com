@@ -48,14 +48,16 @@ export const mutations = mutationTree(state, {});
 export const actions = actionTree(
     { state, getters, mutations },
     {
-        async nuxtServerInit({ state }, ctx: Context) { 
+        async nuxtServerInit({ state }, ctx: Context) {
 
-            state.existingLinks = await this.$strapi.find(
-                'shortened-links',
+            const apiResponse = await ctx.$axios.$get(`${ctx.$config.apiURL}/items/shortened_links`,
                 {
-                    token: ctx.$config.apiToken,
+                    headers: {
+                        'Authorization': `Bearer ${ctx.$config.apiToken}`
+                    },
                 }
-            ).catch(() => { ctx.app.$nuxt.error({ statusCode: 404 }); }) as ShortenedLink[];
+            );
+            state.existingLinks = apiResponse.data;
         },
     }
 );

@@ -53,7 +53,7 @@ export default Vue.extend({
 
                 if (!exists) {
 
-                    await this.$strapi.create('shortened-links',
+                    await this.$axios.$post(`${this.$config.apiURL}/items/shortened_links`,
                         {
                             name: this.form.name,
                             user: this.form.user,
@@ -61,7 +61,7 @@ export default Vue.extend({
                             url: this.form.url,
                             visits: {
                                 count: 0,
-                                list: [],
+                                list: []
                             },
                         }
                     );
@@ -164,7 +164,8 @@ export default Vue.extend({
                                         </label>
                                     </div>
                                     <div class="relative my-4">
-                                        <input type="url" id="url" v-model="form.url" pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"
+                                        <input type="url" id="url" v-model="form.url"
+                                            pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"
                                             class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-800 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-600 peer"
                                             placeholder=" " required />
                                         <label for="url"
@@ -174,7 +175,7 @@ export default Vue.extend({
                                     </div>
                                     <div class="my-4">
                                         <div class="relative">
-                                            <input type="text" id="slug" v-model="form.slug" minlength="2"
+                                            <input type="text" id="slug" v-model="form.slug" minlength="3"
                                                 aria-describedby="slug_helper_text"
                                                 class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-800 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-600 peer"
                                                 placeholder=" " />

@@ -27,6 +27,7 @@ interface ShortenedLink {
         count: number,
         list: Visit[],
     },
+    updated_at: Date,
 }
 
 export default async function (ctx: Context) {
@@ -39,15 +40,15 @@ export default async function (ctx: Context) {
 
         const request_slug = ctx.route.path.slice(1);
 
-        const apiResponse = await ctx.app.$strapi.find(
-            'shortened-links',
+        const apiResponse = await ctx.$axios.$get(`${ctx.$config.apiURL}/items/shortened_links?slug=${request_slug}`,
             {
-                token: ctx.$config.apiToken,
-                slug: request_slug,
+                headers: {
+                    'Authorization': `Bearer ${ctx.$config.apiToken}`
+                },
             }
-        ).catch(() => { ctx.error({ statusCode: 404 }); }) as ShortenedLink[];
+        );
 
-        const request_link = apiResponse[0];
+        const request_link = apiResponse.data[0];
 
         if (request_link) {
 
@@ -79,10 +80,16 @@ export default async function (ctx: Context) {
                 list: visits_list,
             };
 
-            await ctx.$axios.put(`${ctx.$config.apiURL}/shortened-links/${request_link.id}?token=${ctx.$config.apiToken}`,
+            await ctx.$axios.put(`${ctx.$config.apiURL}/items/shortened_links/${request_link.id}?token=${ctx.$config.apiToken}`,
                 {
-                    visits: new_visits_parameter
+                    visits: new_visits_parameter,
+                    updated_at: new Date(),
                 },
+                {
+                    headers: {
+                        'Authorization': `Bearer ${ctx.$config.apiToken}`
+                    },
+                }
             );
 
             ctx.redirect(request_link.url);
