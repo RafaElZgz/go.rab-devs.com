@@ -50,5 +50,5 @@
   - Basic knowledge of Directus and having an operative API to connect to. It is not mandatory to use Directus, you can also use your own custom API as long as you modify the project code, so that it does the queries well.
   - Knowledge in:
     - JSON
-    - REST API Calls ([Axios and @nuxtjs/strapi](https://docs-v3.strapi.io/developer-docs/latest/developer-resources/content-api/integrations/nuxt-js.html#create-a-nuxt-js-app))
+    - REST API Calls ([Axios](https://docs.directus.io/reference/introduction.html))
     - JavaScript (very important) and know how to handle with TypeScript.
