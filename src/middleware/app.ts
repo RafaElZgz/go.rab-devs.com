@@ -14,7 +14,7 @@ interface Visit {
     os: string | undefined,
     osVersion: string | undefined,
     region: string | undefined,
-    createdAt: Date,
+    createdAt: number,
 }
 
 interface ShortenedLink {
@@ -27,7 +27,7 @@ interface ShortenedLink {
         count: number,
         list: Visit[],
     },
-    updated_at: Date,
+    updated_at: number,
 }
 
 export default async function (ctx: Context) {
@@ -40,7 +40,7 @@ export default async function (ctx: Context) {
 
         const request_slug = ctx.route.path.slice(1);
 
-        const apiResponse = await ctx.$axios.$get(`${ctx.$config.apiURL}/items/shortened_links?slug=${request_slug}`,
+        const apiResponse = await ctx.$axios.$get(`${ctx.$config.apiURL}/items/shortened_links?filter={"slug":{"_eq":"${request_slug}"}}`,
             {
                 headers: {
                     'Authorization': `Bearer ${ctx.$config.apiToken}`
@@ -69,7 +69,7 @@ export default async function (ctx: Context) {
                 os: ctx.app.$ua.os(),
                 osVersion: ctx.app.$ua.osVersion(),
                 region: ip_data.regionName,
-                createdAt: new Date(),
+                createdAt: Date.now(),
             };
 
             const visits_list: Visit[] = request_link.visits.list;
@@ -80,10 +80,10 @@ export default async function (ctx: Context) {
                 list: visits_list,
             };
 
-            await ctx.$axios.put(`${ctx.$config.apiURL}/items/shortened_links/${request_link.id}?token=${ctx.$config.apiToken}`,
+            await ctx.$axios.$patch(`${ctx.$config.apiURL}/items/shortened_links/${request_link.id}`,
                 {
                     visits: new_visits_parameter,
-                    updated_at: new Date(),
+                    updated_at: Date.now(),
                 },
                 {
                     headers: {

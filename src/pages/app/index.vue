@@ -106,9 +106,11 @@ export default Vue.extend({
         },
     },
     mounted() {
+        /*
         if (this.$strapi.user) {
             this.form.user = this.$strapi.user;
         }
+        */
     },
 })
 </script>
