@@ -12,6 +12,13 @@ const form = {
 }
 
 export default Vue.extend({
+    created() {
+        /*
+        if (this.$strapi.user) {
+            this.$router.push(this.localePath('app-dashboard'));
+        }
+        */
+    },
     data() {
         return {
             icons: icons,
@@ -45,7 +52,7 @@ export default Vue.extend({
     methods: {
         async login() {
             try {
-                await this.$strapi.login({ identifier: this.form.email, password: this.form.password });
+                //await this.$strapi.login({ identifier: this.form.email, password: this.form.password });
                 await this.$router.push(this.localePath('app-dashboard'));
 
                 this.$toast.show(`${this.$i18n.t('pages.dashboard.login.alerts.success')}`,

@@ -26,5 +26,14 @@ export default Vue.extend({
 </script>
 
 <template>
-    <UtilMaintenance class="-mt-24" />
+    <div>
+        <div class="md:px-14 md:py-12">
+            <h1 class="py-1 text-3xl font-semibold dark:text-gray-300">
+                Bienvenido <span class="font-bold">{{ `${$strapi.user.name} ${$strapi.user.surname}` }}</span> 👋
+            </h1>
+            <h3 class="text-xl dark:text-white">
+                Actualmente tienes <span class="font-bold">{{ $strapi.user.shortened_links.length }}</span> links acortados.
+            </h3>
+        </div>
+    </div>
 </template>

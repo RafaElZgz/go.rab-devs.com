@@ -1,4 +1,3 @@
-import apiConfig from "./config/api.config";
 import axiosConfig from "./config/axios.config";
 import i18nConfig from "./config/i18n.config";
 import pwaConfig from "./config/pwa.config";
@@ -58,7 +57,6 @@ export default {
     '@nuxtjs/i18n',
     '@nuxtjs/pwa',
     '@nuxtjs/sitemap',
-    '@nuxtjs/strapi',
     '@nuxtjs/toast',
     'nuxt-user-agent',
   ],
@@ -110,5 +108,4 @@ export default {
   i18n: i18nConfig,
   pwa: pwaConfig,
   sitemap: sitemapConfig,
-  strapi: apiConfig,
 }

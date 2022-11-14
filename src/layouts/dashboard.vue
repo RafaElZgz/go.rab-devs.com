@@ -29,7 +29,7 @@ export default Vue.extend({
     methods: {
         async logout() {
             try {
-                await this.$strapi.logout().then(() => { this.$router.push(this.localePath('/')) });
+                await this.$strapi.logout().then(() => { this.$router.push(this.localePath('index')) });
             } catch (error) { alert('ERROR: ' + error) }
         },
         toggleLocale() {
@@ -95,7 +95,7 @@ export default Vue.extend({
                                 class="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs dark:bg-gray-800 dark:hover:bg-slate-800 dark:text-gray-400 dark:hover:text-white dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800">
 
                                 <img class="inline-block h-[2.375rem] w-[2.375rem] rounded-full ring-2 ring-white dark:ring-gray-800"
-                                    :src="/*'/logo.svg'*/`${$config.apiURL}${$strapi.user.avatar.url}`" alt="User avatar">
+                                    :src="`${$config.apiURL}${$strapi.user.avatar.url}`" alt="User avatar">
                             </button>
 
                             <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-[15rem] bg-white shadow-md rounded-lg p-2 dark:bg-gray-800 dark:border dark:border-gray-700"
@@ -106,7 +106,7 @@ export default Vue.extend({
                                         {{ $t('layouts.dashboard.header.user.menu.title') }}
                                     </p>
                                     <p class="text-sm font-medium text-gray-800 dark:text-gray-300">
-                                        {{ /*'rafael.zgz'*/ $strapi.user.username }}
+                                        {{ $strapi.user.username }}
                                     </p>
                                 </div>
 

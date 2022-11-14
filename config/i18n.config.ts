@@ -12,4 +12,7 @@ export default {
     lazy: true,
     langDir: '@/locales',
     strategy: 'no_prefix',
+    detectBrowserLanguage: {
+        cookieKey: 'lang',
+    },
 }
