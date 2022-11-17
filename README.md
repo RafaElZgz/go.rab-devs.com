@@ -6,6 +6,7 @@
 ### UPDATE
 
 > The development of the project will continue in the next few days using Directus as API.
+> It will take longer than expected to continue the project as Nuxt 3 arrives yesterday, November 16.
 
 # RAB GO
 
